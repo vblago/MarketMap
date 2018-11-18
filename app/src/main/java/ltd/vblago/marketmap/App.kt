@@ -6,7 +6,6 @@ import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasActivityInjector
 import ltd.vblago.marketmap.di.DaggerAppComponent
-
 import javax.inject.Inject
 
 class App: Application(), HasActivityInjector {

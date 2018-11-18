@@ -1,13 +1,27 @@
 package ltd.vblago.marketmap.di
 
 import dagger.Module
-import dagger.android.ContributesAndroidInjector
 import ltd.vblago.marketmap.ui.main.MainActivity
-import ltd.vblago.marketmap.ui.main.di.MainActivityModule
+import android.app.Activity
+import dagger.android.AndroidInjector
+import dagger.android.ActivityKey
+import dagger.multibindings.IntoMap
+import dagger.Binds
+import ltd.vblago.marketmap.ui.main.di.MainActivityComponent
+
 
 @Module
 abstract class ActivityBuilder {
 
-    @ContributesAndroidInjector(modules = arrayOf(MainActivityModule::class))
-    abstract fun bindMainActivity(): MainActivity
+    @Module
+    abstract inner class ActivityBuilder {
+
+        @Binds
+        @IntoMap
+        @ActivityKey(MainActivity::class)
+        internal abstract fun bindMainActivity(builder: MainActivityComponent.Builder): AndroidInjector.Factory<out Activity>
+
+
+
+    }
 }

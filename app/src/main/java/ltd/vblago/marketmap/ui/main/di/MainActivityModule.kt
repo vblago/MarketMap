@@ -2,13 +2,21 @@ package ltd.vblago.marketmap.ui.main.di
 
 import dagger.Module
 import dagger.Provides
-import ltd.vblago.marketmap.repository.Repository
-import ltd.vblago.marketmap.ui.main.MainActivityViewModel
-import ltd.vblago.marketmap.util.SchedulerProvider
+import ltd.vblago.marketmap.api.ApiService
+import ltd.vblago.marketmap.ui.main.MainActivity
+import ltd.vblago.marketmap.ui.main.MainView
+
 
 @Module
 class MainActivityModule {
 
     @Provides
-    fun provideViewModel(repository: Repository, schedulerProvider: SchedulerProvider) = MainActivityViewModel(repository, schedulerProvider)
+    internal fun provideMainView(mainActivity: MainActivity): MainView {
+        return mainActivity
+    }
+
+//    @Provides
+//    internal fun provideMainPresenter(mainView: MainView, apiService: ApiService): MainPresenter {
+//        return MainPresenterImpl(mainView, apiService)
+//    }
 }
